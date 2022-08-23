@@ -1000,7 +1000,7 @@ module.exports = "<div class=\"container-fluid\">\r\n\r\n  <app-zipcode-entry> <
   \************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<div #option class=\"option\"\r\n     appHightlightText\r\n     [targetedCharacters]=\"searchedText\"\r\n     [highlightingClass]=\"'hightlight-text-bold'\"\r\n     [content]=\"optionData.label\"\r\n>\r\n    {{optionData.label}}\r\n</div>\r\n";
+module.exports = "<div #option class=\"option\"\n     appHightlightText\n     [targetedCharacters]=\"searchedText\"\n     [highlightingClass]=\"'hightlight-text-bold'\"\n     [content]=\"optionData.label\"\n>\n    {{optionData.label}}\n</div>\n";
 
 /***/ }),
 
@@ -1010,7 +1010,7 @@ module.exports = "<div #option class=\"option\"\r\n     appHightlightText\r\n   
   \**************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<div class=\"autocomplete-wrapper\">\r\n    <input type=\"text\" class=\"form-control\" [placeholder]=\"placeholderInput\"\r\n           [(ngModel)]=\"inputSearchValue\"\r\n           (focus)=\"onFocus()\"\r\n           (focusout)=\"onFocusOut()\"\r\n    >\r\n\r\n    <ng-container *ngIf=\"isFocus\">\r\n        <div class=\"options-list\">\r\n            <app-option *ngFor=\"let option of optionsData | dataFilter: inputSearchValue\"\r\n                        [optionData]=\"option\"\r\n                        [searchedText]=\"inputSearchValue\"\r\n                        (optionSelectedEvent)=\"getOptionDataSelected($event)\"\r\n            >\r\n            </app-option>\r\n        </div>\r\n    </ng-container>\r\n</div>\r\n";
+module.exports = "<div class=\"autocomplete-wrapper\">\n    <input type=\"text\" class=\"form-control\" [placeholder]=\"placeholderInput\"\n           [(ngModel)]=\"inputSearchValue\"\n           (focus)=\"onFocus()\"\n           (focusout)=\"onFocusOut()\"\n    >\n\n    <ng-container *ngIf=\"isFocus\">\n        <div class=\"options-list\">\n            <app-option *ngFor=\"let option of optionsData | dataFilter: inputSearchValue\"\n                        [optionData]=\"option\"\n                        [searchedText]=\"inputSearchValue\"\n                        (optionSelectedEvent)=\"getOptionDataSelected($event)\"\n            >\n            </app-option>\n        </div>\n    </ng-container>\n</div>\n";
 
 /***/ }),
 
@@ -1020,7 +1020,7 @@ module.exports = "<div class=\"autocomplete-wrapper\">\r\n    <input type=\"text
   \***************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<button\r\n        [ngClass]=\"{\r\n            'btn': true,\r\n            'btn-primary': currentStateTemplate === initialStateTemplate,\r\n            'btn-secondary': currentStateTemplate === workingStateTemplate,\r\n            'btn-success': currentStateTemplate === doneStateTemplate\r\n        }\" class=\"btn btn-primary\"\r\n        (click)=\"triggerAction()\">\r\n    <ng-container *ngTemplateOutlet=\"currentStateTemplate\"></ng-container>\r\n</button>\r\n\r\n<!-- Default templates-->\r\n<ng-template #save>\r\n    Save\r\n</ng-template>\r\n\r\n<ng-template #loading>\r\n    <img src=\"https://github.com/alcfeoh/ng-advanced-workshop/raw/master/src/assets/loader.gif\" style=\"width: 20px\">\r\n</ng-template>\r\n\r\n<ng-template #saved>\r\n    Saved!\r\n</ng-template>\r\n";
+module.exports = "<button\n        [ngClass]=\"{\n            'btn': true,\n            'btn-primary': currentStateTemplate === initialStateTemplate,\n            'btn-secondary': currentStateTemplate === workingStateTemplate,\n            'btn-success': currentStateTemplate === doneStateTemplate\n        }\" class=\"btn btn-primary\"\n        (click)=\"triggerAction()\">\n    <ng-container *ngTemplateOutlet=\"currentStateTemplate\"></ng-container>\n</button>\n\n<!-- Default templates-->\n<ng-template #save>\n    Save\n</ng-template>\n\n<ng-template #loading>\n    <img src=\"https://github.com/alcfeoh/ng-advanced-workshop/raw/master/src/assets/loader.gif\" style=\"width: 20px\">\n</ng-template>\n\n<ng-template #saved>\n    Saved!\n</ng-template>\n";
 
 /***/ }),
 
