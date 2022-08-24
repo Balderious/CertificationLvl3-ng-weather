@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WeatherService} from "../weather.service";
 import {LocationService} from "../location.service";
 import {Router} from "@angular/router";
-import {log} from 'blue-harvest/dist/action_helpers/logger';
 
 @Component({
   selector: 'app-current-conditions',
@@ -13,7 +12,11 @@ export class CurrentConditionsComponent implements OnInit, OnDestroy {
   // Get store (Subject) from weatherService to be use in the template with an async
   public currentConditionsList = this.weatherService.getCurrentConditions();
 
-  constructor(private weatherService : WeatherService, private locationService : LocationService, private router : Router) {}
+  constructor(
+      private weatherService : WeatherService,
+      private locationService : LocationService,
+      private router : Router
+  ) {}
 
   ngOnInit() {
     // Auto refresh system. Possibility to specify the delay (here: 30 seconds as requested)

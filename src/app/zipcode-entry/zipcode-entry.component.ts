@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {LocationService} from '../location.service';
 import {OptionData} from '../shared/components/inputAutocomplete/interfaces/optionData';
-import {fakeCountriesListAvailable} from './fakeCountriesListAvailable';
+import {fakeCountriesListAvailable} from '../shared/mock/fakeCountriesListAvailable';
 
 @Component({
   selector: 'app-zipcode-entry',
@@ -9,8 +9,8 @@ import {fakeCountriesListAvailable} from './fakeCountriesListAvailable';
 })
 export class ZipcodeEntryComponent {
   @ViewChild('zipcode') zipcode!: ElementRef;
-  // Get mock data to be used with inputAutocomplete
-  public countriesDataMock: OptionData[] = fakeCountriesListAvailable;
+  // Get countries data to be used with inputAutocomplete
+  public countriesDataList: OptionData[] = this.service.CountriesDataList;
 
   constructor(private service : LocationService) {}
 
