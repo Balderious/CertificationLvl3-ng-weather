@@ -28,14 +28,15 @@ export class WeatherService {
         this.currentTime = new Date();
         // This process will check if the zipcode already was loaded in the store.
         let alreadyExist = this.currentConditions.find(element => element.zip === zipcode);
-        if (alreadyExist) {
-          // Yes ? then the data will be updated.
+
+        if (alreadyExist) { // Yes ? then the data will be updated.
           alreadyExist = {...alreadyExist, data, time: this.currentTime};
           this.currentConditions = this.currentConditions.map(item => item.zip === alreadyExist.zip ? alreadyExist : item)
-        } else {
-          // No ? then the data will be added in the store.
+
+        } else { // No ? then the data will be added in the store.
           this.currentConditions.push({zip: zipcode, code: countryCode, time: this.currentTime, data: data})
         }
+
         this.currentConditionsSubject.next([...this.currentConditions]);
       });
   }
