@@ -9,8 +9,10 @@
         - Max {{location.data.main.temp_max | number:'.0-0'}}
         - Min {{location.data.main.temp_min | number:'.0-0'}}
       </p>
+      <p style="font-size: 0.9rem">Last update: {{location.time}}</p>
       <p>
         <a [routerLink]="['/forecast', location.zip]" >Show 5-day forecast for {{location.data.name}}</a>
+
       </p>
     </div>
     <div>

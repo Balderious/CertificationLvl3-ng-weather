@@ -20,7 +20,7 @@ export class CurrentConditionsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Auto refresh system. Possibility to specify the delay (here: 30 seconds as requested)
-    this.locationService.startAutoRefreshLocationsCurrentConditions(30000);
+    this.locationService.startAutoRefreshLocationsCurrentConditions(10000);
   }
 
   showForecast(zipcode : string){

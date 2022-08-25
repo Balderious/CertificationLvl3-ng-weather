@@ -15,6 +15,7 @@ export class WeatherService {
   static APPID = '5a4b2d457ecbef9eb2a71e480b947604';
   static ICON_URL = 'https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-hdpi/';
 
+  private currentTime: Date;
   private currentConditions = [];
   private currentConditionsSubject = new Subject<LocalisationConditions[]>();
 
@@ -24,17 +25,18 @@ export class WeatherService {
     // Here we make a request to get the current conditions data from the API. Note the use of backticks and an expression to insert the zipcode
     this.http.get(`${WeatherService.URL}/weather?zip=${zipcode},${countryCode}&units=imperial&APPID=${WeatherService.APPID}`)
       .subscribe(data => {
+        this.currentTime = new Date();
         // This process will check if the zipcode already was loaded in the store.
         let alreadyExist = this.currentConditions.find(element => element.zip === zipcode);
         if (alreadyExist) {
           // Yes ? then the data will be updated.
-          alreadyExist = {...alreadyExist, data: data};
-          this.currentConditions.map(item => item.zip === alreadyExist.zip ? alreadyExist : item)
+          alreadyExist = {...alreadyExist, data, time: this.currentTime};
+          this.currentConditions = this.currentConditions.map(item => item.zip === alreadyExist.zip ? alreadyExist : item)
         } else {
           // No ? then the data will be added in the store.
-          this.currentConditions.push({zip: zipcode, code: countryCode, data: data})
+          this.currentConditions.push({zip: zipcode, code: countryCode, time: this.currentTime, data: data})
         }
-        this.currentConditionsSubject.next(this.currentConditions);
+        this.currentConditionsSubject.next([...this.currentConditions]);
       });
   }
 
